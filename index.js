@@ -48,4 +48,7 @@ app.get("/", (req, res) => {
 /*Search query endpoint */
 app.get('/acme/rest/:searchterm', searchController.getData)
 
-server.listen(port, () => console.log(`The port is listening at ${port}`))
+
+server.listen(process.env.PORT || port, function(){
+  console.log("The port is listening at  %d in %s mode", this.address().port, app.settings.env);
+});
